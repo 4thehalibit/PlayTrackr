@@ -5,9 +5,7 @@ PlayTrakr is a flexible, multi-game scoreboard app designed initially for domino
 ## Live Demo
 
 Try the Domino Scoreboard app online here:  
-[PlayTrackr Live Demo](https://4thehalibit.github.io/PlayTrackr/)](https://yourusername.github.io/your-repo-name/)
-
-## Features
+[PlayTrackr Live Demo](https://4thehalibit.github.io/PlayTrackr/)## Features
 
 - Solo and Duel play modes  
 - Customizable scoring increments  
