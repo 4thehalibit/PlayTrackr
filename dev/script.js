@@ -77,3 +77,59 @@ document.getElementById('historyBtn').addEventListener('click', () => {
 document.getElementById('closeHistoryBtn').addEventListener('click', () => {
   document.getElementById('historyPanel').classList.add('hidden');
 });
+
+// Stay Awake (Wake Lock) Feature
+let wakeLock = null;
+const fallbackVideo = document.getElementById('stayAwakeVideo');
+
+async function requestWakeLock() {
+  if ('wakeLock' in navigator) {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => {
+        console.log('Wake Lock was released');
+      });
+      console.log('Wake Lock is active');
+    } catch (err) {
+      console.error(`${err.name}, ${err.message}`);
+    }
+  } else {
+    if (fallbackVideo) {
+      fallbackVideo.play().catch(err => console.warn("Fallback video failed:", err));
+      console.log("Using video fallback to stay awake.");
+    }
+  }
+}
+
+function releaseWakeLock() {
+  if (wakeLock !== null) {
+    wakeLock.release();
+    wakeLock = null;
+    console.log('Wake Lock manually released');
+  }
+  if (fallbackVideo) {
+    fallbackVideo.pause();
+    fallbackVideo.currentTime = 0;
+    console.log("Fallback video stopped.");
+  }
+}
+
+const wakeLockToggle = document.getElementById('toggle-wake-lock');
+if (wakeLockToggle) {
+  wakeLockToggle.addEventListener('change', async (event) => {
+    if (event.target.checked) {
+      await requestWakeLock();
+    } else {
+      releaseWakeLock();
+    }
+  });
+}
+
+document.addEventListener('visibilitychange', async () => {
+  if (
+    document.visibilityState === 'visible' &&
+    wakeLockToggle?.checked
+  ) {
+    await requestWakeLock();
+  }
+});
