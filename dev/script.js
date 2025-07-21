@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 // Scores and game state
     let scores = { player1: 0, player2: 0 };
     let history = { player1: [], player2: [] };
@@ -91,7 +92,7 @@
       });
 
       const modal = document.getElementById("modal");
-      document.getElementById("modalTitle").textContent = ${winnerName} Wins!;
+      document.getElementById("modalTitle").textContent = `${winnerName} Wins!`;
       modal.classList.remove("hidden");
     }
 
@@ -179,18 +180,17 @@
         if (winnerA) rowClass = 'winner';
         else if (winnerB) rowClass = 'loser';
 
-        html += 
-          <tr class="${rowClass}">
-            <td>${capitalize(game.mode)}</td>
-            <td>${escapeHtml(game.name1)}</td>
-            <td>${game.score1}</td>
-            <td>${escapeHtml(game.name2)}</td>
-            <td>${game.score2}</td>
-            <td style="font-weight: 700; color: ${winnerA ? '#155724' : winnerB ? '#721c24' : '#6c757d'};">
-              ${tie ? 'Tie' : winnerA ? escapeHtml(game.name1) : escapeHtml(game.name2)}
-            </td>
-          </tr>
-        ;
+        html += `
+  <tr class="${rowClass}">
+    <td>${capitalize(game.mode)}</td>
+    <td>${escapeHtml(game.name1)}</td>
+    <td>${game.score1}</td>
+    <td>${escapeHtml(game.name2)}</td>
+    <td>${game.score2}</td>
+    <td style="font-weight: 700; color: ${winnerA ? '#155724' : winnerB ? '#721c24' : '#6c757d'};">
+      ${tie ? 'Tie' : winnerA ? escapeHtml(game.name1) : escapeHtml(game.name2)}
+    </td>
+  </tr>`;
       });
 
       html += '</tbody></table>';
@@ -308,3 +308,22 @@
         addScore('player2');
       }
     });
+
+    // Setup event listeners
+    document.querySelector('.settings-toggle')?.addEventListener('click', toggleSettings);
+    document.getElementById('darkModeToggle')?.addEventListener('click', toggleDarkMode);
+    document.getElementById('resetScoresBtn')?.addEventListener('click', resetScores);
+    document.getElementById('exitToHomeBtn')?.addEventListener('click', exitToHome);
+    document.getElementById('playAgainBtn')?.addEventListener('click', () => { hideModal(); startGame(currentMode); });
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => { hideModal(); exitToHome(); });
+
+    document.querySelectorAll('[data-player]').forEach(el => {
+      el.addEventListener('click', () => addScore(el.id));
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          addScore(el.id);
+        }
+      });
+    });
+});
