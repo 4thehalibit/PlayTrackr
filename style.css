@@ -177,10 +177,18 @@ body.dark-mode #game.duel #player2 {
   overflow-y: auto;
   z-index: 1000;
 }
+
 .settings-panel.open {
   transform: translateX(0);
 }
-.settings-option {
+
+.settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -188,13 +196,16 @@ body.dark-mode #game.duel #player2 {
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
 }
+
 body.dark-mode .settings-panel {
   background: #222;
   color: #eee;
 }
-body.dark-mode .settings-option {
+
+body.dark-mode .settings-item {
   border-color: #444;
 }
+
 .settings-toggle {
   position: fixed;
   top: 15px;

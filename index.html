@@ -12,32 +12,39 @@
   <button class="settings-toggle" aria-label="Open settings" title="Settings" onclick="toggleSettings()">⚙️</button>
 
   <!-- Settings panel -->
-  <aside class="settings-panel" id="settingsPanel" role="region" aria-label="Settings Panel">
-    <h2>Settings</h2>
-    <div class="settings-option">
+  
+ <aside class="settings-panel" id="settingsPanel" role="region" aria-label="Settings Panel">
+  <h2>Settings</h2>
+  <ul class="settings-list">
+    <li class="settings-item">
       <label for="darkModeToggle">Dark Mode</label>
       <button id="darkModeToggle" onclick="toggleDarkMode()" aria-pressed="false">🌙</button>
-    </div>
-    <div class="settings-option">
+    </li>
+    <li class="settings-item">
       <label for="resetScoresBtn">Reset Scores</label>
       <button id="resetScoresBtn" onclick="resetScores()">Reset</button>
-    </div>
-    <div class="settings-option">
+    </li>
+    <li class="settings-item">
       <label for="exitToHomeBtn">Exit to Home</label>
       <button id="exitToHomeBtn" onclick="exitToHome()">Exit</button>
-    </div>
-    <div class="settings-option">
+    </li>
+    <li class="settings-item">
       <label for="scoreIncrementSelect">Score Tap Amount</label>
       <select id="increment" aria-label="Score increment">
         <option value="1">1</option>
         <option value="3">3</option>
         <option value="5" selected>5</option>
       </select>
-    </div>
-    <div class="settings-option"><label>Player Colors</label><button disabled>Coming Soon</button></div>
-    <div class="settings-option"><label>Sound Effects</label><button disabled>Coming Soon</button></div>
-    <div class="settings-option"><label>Accessibility Options</label><button disabled>Coming Soon</button></div>
-  </aside>
+    </li>
+    <li class="settings-item"><label>Player Colors</label><button disabled>Coming Soon</button></li>
+    <li class="settings-item"><label>Sound Effects</label><button disabled>Coming Soon</button></li>
+    <li class="settings-item"><label>Accessibility Options</label><button disabled>Coming Soon</button></li>
+    <li class="settings-item">
+      <label for="toggle-wake-lock">Keep screen awake</label>
+      <input type="checkbox" id="toggle-wake-lock">
+    </li>
+  </ul>
+</aside>
 
   <!-- Home Screen -->
   <main class="home" id="home">
