@@ -73,7 +73,13 @@ function checkForWinner() {
       score2,
       winner,
       timestamp: new Date().toISOString()
-    });
+      
+console.log("Saved game:", {
+  mode, name1, score1, name2, score2, winner
+});
+
+
+
 
     document.getElementById('modal').classList.remove('hidden');
   }
