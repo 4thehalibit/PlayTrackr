@@ -55,12 +55,30 @@ function checkForWinner() {
   const score1 = parseInt(document.getElementById('score1').textContent);
   const score2 = parseInt(document.getElementById('score2').textContent);
   const target1 = parseInt(document.getElementById('target1').value) || 300;
-  const target2 = parseInt(document.getElementById('target2').value) || (document.getElementById('game').classList.contains('solo') ? 350 : 300);
-  
+  const target2 = parseInt(document.getElementById('target2').value) || 
+    (document.getElementById('game').classList.contains('solo') ? 350 : 300);
+
   if (score1 >= target1 || score2 >= target2) {
+    const name1 = document.getElementById('nameDisplay1').textContent;
+    const name2 = document.getElementById('nameDisplay2').textContent;
+    const winner = score1 >= target1 ? name1 : name2;
+    const mode = document.getElementById('game').classList.contains('solo') ? 'solo' : 'duel';
+
+    // ✅ Save game to history
+    saveGameToHistory({
+      mode,
+      name1,
+      score1,
+      name2,
+      score2,
+      winner,
+      timestamp: new Date().toISOString()
+    });
+
     document.getElementById('modal').classList.remove('hidden');
   }
 }
+
 
 // Modal Buttons
 document.getElementById('playAgainBtn').addEventListener('click', () => {
