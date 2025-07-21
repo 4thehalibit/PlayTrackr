@@ -2,53 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>PlayTrakr-Dev </title>
-<link rel="stylesheet" href="css/style.css">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>PlayTrackr</title>
+
+  <!-- Meta for PWA-like experience -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#007acc">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Settings toggle button -->
-  <button class="settings-toggle" aria-label="Open settings" title="Settings" onclick="toggleSettings()">⚙️</button>
+  <!-- Settings Toggle -->
+  <button class="settings-toggle" aria-label="Open settings" onclick="toggleSettings()">⚙️</button>
 
-  <!-- Settings panel -->
-  
- <aside class="settings-panel" id="settingsPanel" role="region" aria-label="Settings Panel">
-  <h2>Settings</h2>
-  <ul class="settings-list">
-    <li class="settings-item">
-      <label for="darkModeToggle">Dark Mode</label>
-      <button id="darkModeToggle" onclick="toggleDarkMode()" aria-pressed="false">🌙</button>
-    </li>
-    <li class="settings-item">
-      <label for="resetScoresBtn">Reset Scores</label>
-      <button id="resetScoresBtn" onclick="resetScores()">Reset</button>
-    </li>
-    <li class="settings-item">
-      <label for="exitToHomeBtn">Exit to Home</label>
-      <button id="exitToHomeBtn" onclick="exitToHome()">Exit</button>
-    </li>
-    <li class="settings-item">
-      <label for="scoreIncrementSelect">Score Tap Amount</label>
-      <select id="increment" aria-label="Score increment">
-        <option value="1">1</option>
-        <option value="3">3</option>
-        <option value="5" selected>5</option>
-      </select>
-    </li>
-    <li class="settings-item"><label>Player Colors</label><button disabled>Coming Soon</button></li>
-    <li class="settings-item"><label>Sound Effects</label><button disabled>Coming Soon</button></li>
-    <li class="settings-item"><label>Accessibility Options</label><button disabled>Coming Soon</button></li>
-    <li class="settings-item">
-      <label for="toggle-wake-lock">Keep screen awake</label>
-      <input type="checkbox" id="toggle-wake-lock">
-    </li>
-  </ul>
-</aside>
+  <!-- Settings Panel -->
+  <aside class="settings-panel" id="settingsPanel" aria-label="Settings Panel">
+    <h2>Settings</h2>
+    <ul class="settings-list">
+      <li class="settings-item">
+        <label for="darkModeToggle">Dark Mode</label>
+        <button id="darkModeToggle" onclick="toggleDarkMode()" aria-pressed="false">🌙</button>
+      </li>
+      <li class="settings-item">
+        <label for="resetScoresBtn">Reset Scores</label>
+        <button id="resetScoresBtn" onclick="resetScores()">Reset</button>
+      </li>
+      <li class="settings-item">
+        <label for="exitToHomeBtn">Exit to Home</label>
+        <button id="exitToHomeBtn" onclick="exitToHome()">Exit</button>
+      </li>
+      <li class="settings-item">
+        <label for="scoreIncrementSelect">Score Tap Amount</label>
+        <select id="scoreIncrementSelect" aria-label="Score increment">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+        </select>
+      </li>
+      <li class="settings-item">
+        <label for="toggle-wake-lock">Keep screen awake</label>
+        <input type="checkbox" id="toggle-wake-lock">
+      </li>
+    </ul>
+  </aside>
 
   <!-- Home Screen -->
   <main class="home" id="home">
-    <h1>PlayTrakr-Dev</h1>
+    <h1>PlayTrackr</h1>
     <input id="name1" placeholder="Player A Name" />
     <input id="name2" placeholder="Player B / Deck Name" />
     <input id="target1" type="number" placeholder="Player A Target (default 300)" />
@@ -77,8 +79,8 @@
     </div>
   </section>
 
-  <!-- Modal -->
-  <div id="modal" class="modal hidden">
+  <!-- Winner Modal -->
+  <div id="modal" class="modal hidden" role="alertdialog" aria-modal="true">
     <div class="modal-content">
       <div id="modalTitle">Winner!</div>
       <div>
@@ -100,17 +102,13 @@
     <button id="closeHistoryBtn">Close</button>
   </aside>
 
-<script src="js/history.js" defer></script>
-<script src="js/script.js" defer></script>
+  <!-- Wake Lock Video Fallback -->
+  <video id="stayAwakeVideo" loop playsinline muted style="display: none;">
+    <source src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDFtcDQyaXNvbTEyMAAAAG1vb3YAAABsbXZoZAAAAAB8JgABfCYAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAZG1kYXQAAAAAAAAD//w==" type="video/mp4">
+  </video>
 
-
-
-
-<video id="stayAwakeVideo" loop playsinline muted style="display: none;">
-  <source src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDFtcDQyaXNvbTEyMAAAAG1vb3YAAABsbXZoZAAAAAB8JgABfCYAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAZG1kYXQAAAAAAAAD//w==" type="video/mp4">
-</video>
-
-
-  
+  <!-- Scripts -->
+  <script src="js/history.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
-</html> 
+</html>
