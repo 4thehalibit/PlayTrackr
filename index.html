@@ -5,24 +5,25 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
 <title>Domino Scoreboard</title>
+
 <link href="style.css" rel="stylesheet"/></head>
 <body>
 <!-- Settings toggle button -->
-<button aria-label="Open settings" class="settings-toggle" title="Settings">⚙️</button>
+<button aria-label="Open settings" class="settings-toggle" onclick="toggleSettings()" title="Settings">⚙️</button>
 <!-- Settings panel -->
 <aside aria-label="Settings Panel" class="settings-panel" id="settingsPanel" role="region">
 <h2>Settings</h2>
 <div class="settings-option">
 <label for="darkModeToggle">Dark Mode</label>
-<button aria-label="Toggle dark mode" aria-pressed="false" id="darkModeToggle">🌙</button>
+<button aria-label="Toggle dark mode" aria-pressed="false" id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
 </div>
 <div class="settings-option">
 <label for="resetScoresBtn">Reset Scores</label>
-<button id="resetScoresBtn">Reset</button>
+<button id="resetScoresBtn" onclick="resetScores()">Reset</button>
 </div>
 <div class="settings-option">
 <label for="exitToHomeBtn">Exit to Home</label>
-<button id="exitToHomeBtn">Exit</button>
+<button id="exitToHomeBtn" onclick="exitToHome()">Exit</button>
 </div>
 <div class="settings-option">
 <label for="scoreIncrementSelect">Score Tap Amount</label>
@@ -57,21 +58,21 @@
 <option value="3">+3 per tap</option>
 <option value="1">+1 per tap</option>
 </select>
-<button aria-label="Start solo play game">Solo Play</button>
-<button aria-label="Start duel play game">Duel Play</button>
+<button aria-label="Start solo play game" onclick="startGame('solo')">Solo Play</button>
+<button aria-label="Start duel play game" onclick="startGame('duel')">Duel Play</button>
 <button aria-label="Show game history" id="historyBtn" title="Game History">🏆 History</button>
 </main>
 <!-- Game Screen -->
 <section aria-label="Domino scoreboard game screen" aria-live="polite" class="scoreboard hidden" id="game" role="region">
-<div aria-label="Player 1 score area. Tap to add score." class="player" data-player="1" id="player1" onclick="addScore('player1')" role="button" tabindex="0">
+<div aria-label="Player 1 score area. Tap to add score." class="player" id="player1" onclick="addScore('player1')" role="button" tabindex="0">
 <div class="name" id="nameDisplay1">Player A</div>
 <div class="score" id="score1">0</div>
-<button aria-label="Undo Player 1 last score" class="undo">Undo</button>
+<button aria-label="Undo Player 1 last score" class="undo" onclick="event.stopPropagation(); undo('player1')">Undo</button>
 </div>
-<div aria-label="Player 2 score area. Tap to add score." class="player" data-player="2" id="player2" onclick="addScore('player2')" role="button" tabindex="0">
+<div aria-label="Player 2 score area. Tap to add score." class="player" id="player2" onclick="addScore('player2')" role="button" tabindex="0">
 <div class="name" id="nameDisplay2">Player B</div>
 <div class="score" id="score2">0</div>
-<button aria-label="Undo Player 2 last score" class="undo">Undo</button>
+<button aria-label="Undo Player 2 last score" class="undo" onclick="event.stopPropagation(); undo('player2')">Undo</button>
 </div>
 </section>
 <!-- Modal for Winner -->
@@ -95,5 +96,6 @@
 <div id="historyList"></div>
 <button id="closeHistoryBtn">Close</button>
 </aside>
+
 <script src="script.js"></script></body>
 </html>
