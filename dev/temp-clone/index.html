@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>PlayMakr </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Settings toggle button -->
+  <button class="settings-toggle" aria-label="Open settings" title="Settings" onclick="toggleSettings()">⚙️</button>
+
+  <!-- Settings panel -->
+  <aside class="settings-panel" id="settingsPanel" role="region" aria-label="Settings Panel">
+    <h2>Settings</h2>
+    <div class="settings-option">
+      <label for="darkModeToggle">Dark Mode</label>
+      <button id="darkModeToggle" onclick="toggleDarkMode()" aria-pressed="false">🌙</button>
+    </div>
+    <div class="settings-option">
+      <label for="resetScoresBtn">Reset Scores</label>
+      <button id="resetScoresBtn" onclick="resetScores()">Reset</button>
+    </div>
+    <div class="settings-option">
+      <label for="exitToHomeBtn">Exit to Home</label>
+      <button id="exitToHomeBtn" onclick="exitToHome()">Exit</button>
+    </div>
+    <div class="settings-option">
+      <label for="scoreIncrementSelect">Score Tap Amount</label>
+      <select id="increment" aria-label="Score increment">
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="5" selected>5</option>
+      </select>
+    </div>
+    <div class="settings-option"><label>Player Colors</label><button disabled>Coming Soon</button></div>
+    <div class="settings-option"><label>Sound Effects</label><button disabled>Coming Soon</button></div>
+    <div class="settings-option"><label>Accessibility Options</label><button disabled>Coming Soon</button></div>
+  </aside>
+
+  <!-- Home Screen -->
+  <main class="home" id="home">
+    <h1>PlayTrakr</h1>
+    <input id="name1" placeholder="Player A Name" />
+    <input id="name2" placeholder="Player B / Deck Name" />
+    <input id="target1" type="number" placeholder="Player A Target (default 300)" />
+    <input id="target2" type="number" placeholder="Player B / Deck Target (default 300/350)" />
+    <select id="increment">
+      <option value="5" selected>+5 per tap</option>
+      <option value="3">+3 per tap</option>
+      <option value="1">+1 per tap</option>
+    </select>
+    <button onclick="startGame('solo')">Solo Play</button>
+    <button onclick="startGame('duel')">Duel Play</button>
+    <button id="historyBtn">🏆 History</button>
+  </main>
+
+  <!-- Game Screen -->
+  <section id="game" class="scoreboard hidden">
+    <div id="player1" class="player" onclick="addScore('player1')" tabindex="0">
+      <div class="name" id="nameDisplay1">Player A</div>
+      <div class="score" id="score1">0</div>
+      <button class="undo" onclick="event.stopPropagation(); undo('player1')">Undo</button>
+    </div>
+    <div id="player2" class="player" onclick="addScore('player2')" tabindex="0">
+      <div class="name" id="nameDisplay2">Player B</div>
+      <div class="score" id="score2">0</div>
+      <button class="undo" onclick="event.stopPropagation(); undo('player2')">Undo</button>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <div id="modalTitle">Winner!</div>
+      <div>
+        <button id="playAgainBtn">Play Again</button>
+        <button id="closeModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Panel -->
+  <aside id="historyPanel" class="hidden">
+    <h3>Game History</h3>
+    <select id="historyFilterSelect">
+      <option value="all">All</option>
+      <option value="solo">Solo</option>
+      <option value="duel">Duel</option>
+    </select>
+    <div id="historyList"></div>
+    <button id="closeHistoryBtn">Close</button>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

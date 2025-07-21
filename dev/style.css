@@ -1,0 +1,342 @@
+/* ========== Reset & Base ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #eee;
+  color: #111;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+/* ========== Buttons ========== */
+button {
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover,
+button:focus {
+  outline: none;
+  filter: brightness(0.9);
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== Home Screen ========== */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+.home input,
+.home select {
+  width: 220px;
+  max-width: 90vw;
+  padding: 10px;
+  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  color: #111;
+}
+.home input::placeholder {
+  color: #888;
+}
+body.dark-mode .home input,
+body.dark-mode .home select {
+  background: #222;
+  color: #eee;
+  border-color: #444;
+}
+body.dark-mode .home input::placeholder {
+  color: #bbb;
+}
+.home button {
+  background-color: #007acc;
+  color: white;
+}
+
+/* ========== Game Screen ========== */
+#game.scoreboard {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+#game.solo {
+  flex-direction: row;
+}
+#game.duel {
+  flex-direction: column;
+}
+
+/* ========== Player Area ========== */
+.player {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  cursor: pointer;
+}
+.player:active {
+  filter: brightness(0.85);
+}
+.name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.score {
+  font-size: 60px;
+  font-weight: bold;
+}
+.undo {
+  position: absolute;
+  bottom: 20px;
+  background-color: #444;
+  color: white;
+}
+
+/* Solo Colors */
+#game.solo #player1 {
+  background: #2b6777;
+  color: white;
+  border-right: 2px solid white;
+}
+#game.solo #player2 {
+  background: #c8d8e4;
+  color: black;
+}
+
+/* Duel Colors */
+#game.duel #player1 {
+  background: #ffcccb;
+  transform: rotate(180deg);
+  border-bottom: 2px solid white;
+}
+#game.duel #player1 .name,
+#game.duel #player1 .score,
+#game.duel #player1 .undo {
+  transform: rotate(180deg);
+}
+#game.duel #player2 {
+  background: #90ee90;
+}
+
+/* Dark Mode Variants */
+body.dark-mode #game.solo #player1 {
+  background: #1e4e5f;
+  color: #eee;
+}
+body.dark-mode #game.solo #player2 {
+  background: #334c58;
+}
+body.dark-mode #game.duel #player1 {
+  background: #803333;
+}
+body.dark-mode #game.duel #player2 {
+  background: #3a8a3a;
+}
+
+/* ========== Settings Panel ========== */
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: white;
+  color: #111;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.settings-panel.open {
+  transform: translateX(0);
+}
+
+.settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+body.dark-mode .settings-panel {
+  background: #222;
+  color: #eee;
+}
+
+body.dark-mode .settings-item {
+  border-color: #444;
+}
+
+.settings-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* ========== Modal (Winner) ========== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: white;
+  color: #007acc;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+  box-shadow: 0 0 10px #007accaa;
+}
+.modal-content button {
+  margin-top: 15px;
+  background: #007acc;
+  color: white;
+}
+body.dark-mode .modal-content {
+  background: #222;
+  color: #aaddff;
+}
+
+/* ========== History Panel ========== */
+#historyPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  max-height: 80vh;
+  background: white;
+  color: #111;
+  transform: translate(-50%, -50%);
+  z-index: 1500;
+  border: 2px solid #007acc;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #007accaa;
+  padding: 15px;
+  overflow-y: auto;
+}
+#historyPanel.hidden {
+  display: none;
+}
+#historyPanel h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #007acc;
+}
+#historyPanel select {
+  display: block;
+  margin: 0 auto 10px;
+  padding: 6px;
+  font-size: 16px;
+}
+#historyPanel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#historyPanel th, #historyPanel td {
+  padding: 6px;
+  border-bottom: 1px solid #ccc;
+}
+#historyPanel tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+#historyPanel tr.winner {
+  background: #2a9d8f;
+  color: white;
+  font-weight: bold;
+}
+#historyPanel tr.loser {
+  background: #e76f51;
+  color: white;
+  font-weight: bold;
+}
+#closeHistoryBtn {
+  margin-top: 10px;
+  background-color: #007acc;
+  color: white;
+}
+
+/* Dark Mode for History */
+body.dark-mode #historyPanel {
+  background: #121212;
+  color: #eee;
+  border-color: #3399ff;
+  box-shadow: 0 0 15px #3399ffaa;
+}
+body.dark-mode #historyPanel h3 {
+  color: #66aaff;
+}
+body.dark-mode #historyPanel select {
+  background: #222;
+  color: #eee;
+  border-color: #66aaff;
+}
+body.dark-mode #historyPanel tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+body.dark-mode #historyPanel tr:nth-child(odd) {
+  background-color: #1b1b1b;
+}
+body.dark-mode #historyPanel tr.winner {
+  background-color: #1f6f63;
+}
+body.dark-mode #historyPanel tr.loser {
+  background-color: #b54a36;
+}
+
+/* ========== Utilities ========== */
+.hidden {
+  display: none !important;
+}
