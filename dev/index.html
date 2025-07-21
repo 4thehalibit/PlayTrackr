@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<title>Domino Scoreboard</title>
+<link href="style.css" rel="stylesheet"/></head>
+<body>
+<!-- Settings toggle button -->
+<button aria-label="Open settings" class="settings-toggle" title="Settings">⚙️</button>
+<!-- Settings panel -->
+<aside aria-label="Settings Panel" class="settings-panel" id="settingsPanel" role="region">
+<h2>Settings</h2>
+<div class="settings-option">
+<label for="darkModeToggle">Dark Mode</label>
+<button aria-label="Toggle dark mode" aria-pressed="false" id="darkModeToggle">🌙</button>
+</div>
+<div class="settings-option">
+<label for="resetScoresBtn">Reset Scores</label>
+<button id="resetScoresBtn">Reset</button>
+</div>
+<div class="settings-option">
+<label for="exitToHomeBtn">Exit to Home</label>
+<button id="exitToHomeBtn">Exit</button>
+</div>
+<div class="settings-option">
+<label for="scoreIncrementSelect">Score Tap Amount</label>
+<select aria-label="Select score tap increment" id="scoreIncrementSelect">
+<option value="1">1</option>
+<option value="3">3</option>
+<option selected="" value="5">5</option>
+</select>
+</div>
+<div class="settings-option">
+<label>Player Colors</label>
+<button disabled="">Coming Soon</button>
+</div>
+<div class="settings-option">
+<label>Sound Effects</label>
+<button disabled="">Coming Soon</button>
+</div>
+<div class="settings-option">
+<label>Accessibility Options</label>
+<button disabled="">Coming Soon</button>
+</div>
+</aside>
+<!-- Home Screen -->
+<main aria-label="Domino scoreboard home screen" class="home" id="home" role="main">
+<h1>Domino Scoreboard</h1>
+<input aria-label="Player A name" id="name1" placeholder="Player A Name"/>
+<input aria-label="Player B or Deck name" id="name2" placeholder="Player B / Deck Name"/>
+<input aria-label="Player A target score" id="target1" placeholder="Player A Target (default 300)" type="number"/>
+<input aria-label="Player B or Deck target score" id="target2" placeholder="Player B / Deck Target (default 300/350)" type="number"/>
+<select aria-label="Score increment" id="increment">
+<option selected="" value="5">+5 per tap</option>
+<option value="3">+3 per tap</option>
+<option value="1">+1 per tap</option>
+</select>
+<button aria-label="Start solo play game">Solo Play</button>
+<button aria-label="Start duel play game">Duel Play</button>
+<button aria-label="Show game history" id="historyBtn" title="Game History">🏆 History</button>
+</main>
+<!-- Game Screen -->
+<section aria-label="Domino scoreboard game screen" aria-live="polite" class="scoreboard hidden" id="game" role="region">
+<div aria-label="Player 1 score area. Tap to add score." class="player" data-player="1" id="player1" onclick="addScore('player1')" role="button" tabindex="0">
+<div class="name" id="nameDisplay1">Player A</div>
+<div class="score" id="score1">0</div>
+<button aria-label="Undo Player 1 last score" class="undo">Undo</button>
+</div>
+<div aria-label="Player 2 score area. Tap to add score." class="player" data-player="2" id="player2" onclick="addScore('player2')" role="button" tabindex="0">
+<div class="name" id="nameDisplay2">Player B</div>
+<div class="score" id="score2">0</div>
+<button aria-label="Undo Player 2 last score" class="undo">Undo</button>
+</div>
+</section>
+<!-- Modal for Winner -->
+<div aria-labelledby="modalTitle" aria-live="assertive" aria-modal="true" class="modal hidden" id="modal" role="alertdialog">
+<div class="modal-content" id="modalContent">
+<div id="modalTitle" style="margin-bottom: 10px; font-weight: 700;">Winner!</div>
+<div>
+<button aria-label="Play again with same settings" id="playAgainBtn">Play Again</button>
+<button aria-label="Close winner dialog and go home" id="closeModalBtn">Close</button>
+</div>
+</div>
+</div>
+<!-- History Panel -->
+<aside aria-label="Game history panel" aria-live="polite" class="hidden" id="historyPanel" role="region">
+<h3>Game History</h3>
+<select aria-label="Filter game history" id="historyFilterSelect">
+<option value="all">All</option>
+<option value="solo">Solo</option>
+<option value="duel">Duel</option>
+</select>
+<div id="historyList"></div>
+<button id="closeHistoryBtn">Close</button>
+</aside>
+<script src="script.js"></script></body>
+</html>
