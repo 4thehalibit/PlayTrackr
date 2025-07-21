@@ -71,9 +71,48 @@ document.getElementById('playAgainBtn').addEventListener('click', () => {
 document.getElementById('closeModalBtn').addEventListener('click', exitToHome);
 
 // History (placeholder, add logic later)
+
 document.getElementById('historyBtn').addEventListener('click', () => {
   document.getElementById('historyPanel').classList.remove('hidden');
 });
 document.getElementById('closeHistoryBtn').addEventListener('click', () => {
   document.getElementById('historyPanel').classList.add('hidden');
 });
+
+let wakeLock = null;
+let keepAwakeEnabled = false;
+
+async function enableKeepAwake() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    } else {
+      // Fallback for iOS Safari using video
+      const video = document.getElementById('keepAwakeVideo');
+      video.classList.remove('hidden');
+      video.play();
+    }
+  } catch (err) {
+    console.warn('KeepAwake failed:', err);
+  }
+}
+
+function disableKeepAwake() {
+  if (wakeLock) {
+    wakeLock.release();
+    wakeLock = null;
+  }
+  const video = document.getElementById('keepAwakeVideo');
+  video.pause();
+  video.classList.add('hidden');
+}
+
+function toggleKeepAwake() {
+  keepAwakeEnabled = !keepAwakeEnabled;
+  const btn = document.getElementById('keepAwakeToggle');
+  btn.setAttribute('aria-pressed', keepAwakeEnabled);
+  btn.textContent = keepAwakeEnabled ? '🟢' : '⚪';
+
+  if (keepAwakeEnabled) enableKeepAwake();
+  else disableKeepAwake();
+}
