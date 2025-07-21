@@ -10,7 +10,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#007acc">
 
-  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
@@ -102,13 +103,12 @@
     <button id="closeHistoryBtn">Close</button>
   </aside>
 
-  <!-- Wake Lock Video Fallback -->
-  <video id="stayAwakeVideo" loop playsinline muted style="display: none;">
-    <source src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDFtcDQyaXNvbTEyMAAAAG1vb3YAAABsbXZoZAAAAAB8JgABfCYAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAZG1kYXQAAAAAAAAD//w==" type="video/mp4">
-  </video>
+ <script src="js/history.js" defer></script>
+<script src="js/script.js" defer></script>
 
-  <!-- Scripts -->
-  <script src="js/script.js" defer></script>
-  <script src="js/history.js" defer></script>
+<video id="stayAwakeVideo" loop playsinline muted style="display: none;">
+  <source src="data:video/mp4;base64,AAAAHGZ0e...AA==" type="video/mp4">
+</video>
+
 </body>
 </html>
