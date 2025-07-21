@@ -1,12 +1,3 @@
-:root {
-  --accent: #007acc;
-  --accent-dark: #005f99;
-  --light-bg: #fff;
-  --dark-bg: #121212;
-  --light-text: #111;
-  --dark-text: #f0f0f0;
-}
-
 /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
@@ -17,7 +8,7 @@
       font-family: Arial, sans-serif;
       transition: background-color 0.3s, color 0.3s;
       background-color: #eee;
-      color: var(--light-text);
+      color: #111;
       -webkit-tap-highlight-color: transparent;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -26,8 +17,8 @@
     }
 
     body.dark-mode {
-      background-color: var(--dark-bg);
-      color: var(--dark-text);
+      background-color: #121212;
+      color: #f0f0f0;
     }
 
     /* Home Screen */
@@ -75,7 +66,7 @@
       cursor: pointer;
       border-radius: 8px;
       border: none;
-      background-color: var(--accent);
+      background-color: #007acc;
       color: white;
       user-select: none;
       transition: background-color 0.3s ease;
@@ -84,7 +75,7 @@
 
     .home button:hover,
     .home button:focus {
-      background-color: var(--accent-dark);
+      background-color: #005f99;
       outline: none;
     }
 
@@ -235,9 +226,9 @@
       border-radius: 8px;
       font-size: 24px;
       font-weight: 700;
-      color: var(--accent);
+      color: #007acc;
       text-align: center;
-      box-shadow: 0 0 15px var(--accent)aa;
+      box-shadow: 0 0 15px #007accaa;
       max-width: 90vw;
       user-select: text;
     }
@@ -255,7 +246,7 @@
       border-radius: 8px;
       border: none;
       cursor: pointer;
-      background-color: var(--accent);
+      background-color: #007acc;
       color: white;
       transition: background-color 0.3s ease;
       user-select: none;
@@ -263,7 +254,7 @@
 
     .modal-content button:hover,
     .modal-content button:focus {
-      background-color: var(--accent-dark);
+      background-color: #005f99;
       outline: none;
     }
 
@@ -275,7 +266,7 @@
       width: 80%;
       max-width: 320px;
       height: 100vh;
-      background-color: var(--light-bg);
+      background-color: #fff;
       border-left: 1px solid #ccc;
       box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
       transform: translateX(100%);
@@ -327,7 +318,7 @@
     body.dark-mode .settings-option button,
     body.dark-mode .settings-option select {
       background: #444;
-      color: var(--light-bg);
+      color: #fff;
     }
 
 .settings-toggle {
@@ -377,10 +368,10 @@
   left: 50%;
   width: 350px;
   max-height: 80vh;
-  background: var(--light-bg);
-  border: 2px solid var(--accent);
+  background: #fff;
+  border: 2px solid #007acc;
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--accent)aa;
+  box-shadow: 0 0 15px #007accaa;
   overflow-y: auto;
   padding: 15px;
   z-index: 10000;
@@ -403,10 +394,10 @@ body.dark-mode #historyPanel {
   left: 50%;
   width: 350px;
   max-height: 80vh;
-  background: var(--light-bg);
-  border: 2px solid var(--accent);
+  background: #fff;
+  border: 2px solid #007acc;
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--accent)aa;
+  box-shadow: 0 0 15px #007accaa;
   overflow-y: auto;
   padding: 15px;
   z-index: 10000;
@@ -417,7 +408,7 @@ body.dark-mode #historyPanel {
 }
 
 body.dark-mode #historyPanel {
-  background: var(--dark-bg);
+  background: #121212;
   border-color: #3399ff;
   box-shadow: 0 0 15px #3399ffaa;
   color: #ddd; /* default light text */
@@ -425,7 +416,7 @@ body.dark-mode #historyPanel {
 
 #historyPanel h3 {
   margin-bottom: 10px;
-  color: var(--accent);
+  color: #007acc;
   text-align: center;
   user-select: text;
 }
@@ -440,13 +431,13 @@ body.dark-mode #historyPanel h3 {
   padding: 5px;
   font-size: 16px;
   border-radius: 6px;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid #007acc;
   width: 180px;
   max-width: 90vw;
   cursor: pointer;
   user-select: none;
   background: white;
-  color: var(--light-text);
+  color: #111;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -485,7 +476,7 @@ body.dark-mode #historyPanel tr:nth-child(even) {
 }
 
 #historyPanel tr:nth-child(odd) {
-  background-color: var(--light-bg);
+  background-color: #fff;
 }
 
 body.dark-mode #historyPanel tr:nth-child(odd) {
@@ -495,26 +486,26 @@ body.dark-mode #historyPanel tr:nth-child(odd) {
 /* WINNER row styles */
 #historyPanel tr.winner {
   background-color: #2a9d8f !important; /* teal green */
-  color: var(--light-bg)fff !important; /* white text */
+  color: #ffffff !important; /* white text */
   font-weight: 700;
 }
 
 body.dark-mode #historyPanel tr.winner {
   background-color: #1f6f63 !important; /* darker teal */
-  color: var(--light-bg)fff !important;
+  color: #ffffff !important;
   font-weight: 700;
 }
 
 /* LOSER row styles */
 #historyPanel tr.loser {
   background-color: #e76f51 !important; /* warm coral/orange */
-  color: var(--light-bg)fff !important; /* white text */
+  color: #ffffff !important; /* white text */
   font-weight: 700;
 }
 
 body.dark-mode #historyPanel tr.loser {
   background-color: #b54a36 !important; /* darker coral */
-  color: var(--light-bg)fff !important;
+  color: #ffffff !important;
   font-weight: 700;
 }
 
@@ -525,7 +516,7 @@ body.dark-mode #historyPanel tr.loser {
   padding: 8px 16px;
   font-size: 16px;
   border-radius: 8px;
-  background-color: var(--accent);
+  background-color: #007acc;
   color: white;
   border: none;
   cursor: pointer;
@@ -535,7 +526,7 @@ body.dark-mode #historyPanel tr.loser {
 
 #closeHistoryBtn:hover,
 #closeHistoryBtn:focus {
-  background-color: var(--accent-dark);
+  background-color: #005f99;
   outline: none;
 }
 
@@ -543,7 +534,7 @@ body.dark-mode #historyPanel tr.loser {
 button:focus,
 input:focus,
 select:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #007acc;
   outline-offset: 2px;
 }
 
@@ -552,7 +543,7 @@ select:focus {
   width: 8px;
 }
 #historyPanel::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: #007acc;
   border-radius: 4px;
 }
 body.dark-mode #historyPanel::-webkit-scrollbar-thumb {
@@ -571,7 +562,7 @@ body.dark-mode #historyPanel::-webkit-scrollbar-thumb {
   padding: 8px 16px;
   font-size: 16px;
   border-radius: 8px;
-  background-color: var(--accent);
+  background-color: #007acc;
   color: white;
   border: none;
   cursor: pointer;
@@ -581,7 +572,7 @@ body.dark-mode #historyPanel::-webkit-scrollbar-thumb {
 
 #closeHistoryBtn:hover,
 #closeHistoryBtn:focus {
-  background-color: var(--accent-dark);
+  background-color: #005f99;
   outline: none;
 }
 
@@ -589,7 +580,7 @@ body.dark-mode #historyPanel::-webkit-scrollbar-thumb {
 button:focus,
 input:focus,
 select:focus {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #007acc;
   outline-offset: 2px;
 }
 
@@ -599,7 +590,7 @@ select:focus {
 }
 
 #historyPanel::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: #007acc;
   border-radius: 4px;
 }
 

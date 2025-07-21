@@ -308,22 +308,3 @@
         addScore('player2');
       }
     });
-
-
-// Setup event listeners
-document.querySelector('.settings-toggle')?.addEventListener('click', toggleSettings);
-document.getElementById('darkModeToggle')?.addEventListener('click', toggleDarkMode);
-document.getElementById('resetScoresBtn')?.addEventListener('click', resetScores);
-document.getElementById('exitToHomeBtn')?.addEventListener('click', exitToHome);
-document.getElementById('playAgainBtn')?.addEventListener('click', () => { hideModal(); startGame(currentMode); });
-document.getElementById('closeModalBtn')?.addEventListener('click', () => { hideModal(); exitToHome(); });
-
-document.querySelectorAll('[data-player]').forEach(el => {
-  el.addEventListener('click', () => addScore(el.id));
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      addScore(el.id);
-    }
-  });
-});
