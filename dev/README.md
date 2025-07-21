@@ -1,4 +1,4 @@
-# PlayTrackr
+# PlayTrackr-Dev
 PlayTrakr is a flexible, multi-game scoreboard app designed initially for dominoes with plans to support other games. Features include customizable player names, target scores, history tracking, and more.
 
 ## Features
