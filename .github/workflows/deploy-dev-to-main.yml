@@ -8,32 +8,30 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow push access using GITHUB_TOKEN
+
     steps:
       - name: Checkout development branch
         uses: actions/checkout@v3
         with:
           ref: development
 
-      - name: Clone main branch into temp folder
+      - name: Clone main branch to temp directory
         run: |
-          git clone --branch main https://github.com/${{ github.repository }} temp-clone
+          git clone --single-branch --branch main https://github.com/${{ github.repository }} temp-clone
 
-      - name: Copy dev branch files into temp-clone/dev
+      - name: Copy files to /dev folder in main
         run: |
-          # Remove existing dev folder in temp clone
-          rm -rf temp-clone/dev
           mkdir -p temp-clone/dev
-          # Enable extended globbing for exclude pattern
           shopt -s extglob
-          # Copy everything except .git, .github, dev folder, and temp-clone itself
-          cp -r !(temp-clone|.git|.github|dev) temp-clone/dev/
+          rsync -av --delete --exclude='.git' --exclude='.github' --exclude='dev' ./ temp-clone/dev/
 
-      - name: Commit and push changes to main branch
+      - name: Commit and push changes to main:/dev
         run: |
           cd temp-clone
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add dev
-          # Commit only if there are changes, otherwise print message
           git commit -m "Deploy dev branch to /dev/ on main [skip ci]" || echo "No changes to commit"
-          git push origin main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
