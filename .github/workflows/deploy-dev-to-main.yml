@@ -1,0 +1,37 @@
+name: Deploy Dev to Main /dev/
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow push access using GITHUB_TOKEN
+
+    steps:
+      - name: Checkout development branch
+        uses: actions/checkout@v3
+        with:
+          ref: development
+
+      - name: Clone main branch to temp directory
+        run: |
+          git clone --single-branch --branch main https://github.com/${{ github.repository }} temp-clone
+
+      - name: Copy files to /dev folder in main
+        run: |
+          mkdir -p temp-clone/dev
+          shopt -s extglob
+          rsync -av --delete --exclude='.git' --exclude='.github' --exclude='dev' ./ temp-clone/dev/
+
+      - name: Commit and push changes to main:/dev
+        run: |
+          cd temp-clone
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dev
+          git commit -m "Deploy dev branch to /dev/ on main [skip ci]" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main

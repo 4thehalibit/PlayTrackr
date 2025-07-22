@@ -15,6 +15,10 @@
   <aside class="settings-panel" id="settingsPanel" role="region" aria-label="Settings Panel">
     <h2>Settings</h2>
     <div class="settings-option">
+  <label for="keepAwakeToggle">Keep Screen Awake</label>
+  <button id="keepAwakeToggle" onclick="toggleKeepAwake()" aria-pressed="false">⚪</button>
+</div>
+    <div class="settings-option">
       <label for="darkModeToggle">Dark Mode</label>
       <button id="darkModeToggle" onclick="toggleDarkMode()" aria-pressed="false">🌙</button>
     </div>
@@ -94,5 +98,13 @@
   </aside>
 
   <script src="script.js"></script>
+
+  <!--Wakelock Video-->
+  <video id="keepAwakeVideo" playsinline muted loop class="hidden">
+  <source
+    src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDFtcDQxaXNvbXNwNDFpc28ybXA0MQAAACBtZGF0AAACqAAAABZpbHN0AAAAAQAAAAMAAAACAAACrAAAABZhdmMxAAACsAAAABZhdmMxAAACtAAAABZhdmMxAAACuAAAABZhdmMxAAACvAAAABZhdmMxAAACwAAAABZhdmMxAAACxAAAABZhdmMxAAACyAAAABZhdmMxAAACzAAAABZhdmMxAAAC0AAAABZhdmMxAAAC1AAAABZhdmMxAAAC2AAAABZhdmMxAAAC3AAAABZhdmMxAAAC4AAAABZhdmMxAAAC5AAAABZhdmMxAAAC6AAAABZhdmMxAAAC7AAAABZhdmMxAAAC8AAAABZhdmMxAAAC9AAAABZhdmMxAAAC+AAAABZhdmMxAAAC/AAAABZhdmMxAAADAAAAABZhdmMxAAADBAAAABZhdmMxAAADBQAAABZhdmMxAAADCgAAABZhdmMxAAADDAAAABZhdmMxAAADFAAAABZhdmMxAAADGAAAABZhdmMxAAADHAAAABZhdmMxAAADIgAAABZhdmMxAAADJAAAABZhdmMxAAADKAAAABZhdmMxAAADLAAAABZhdmMxAAADMwAAABZhdmMxAAADNAAAABZhdmMxAAADOAAAABZhdmMxAAADPAAAABZhdmMxAAADQAAAABZhdmMxAAADRgAAABZhdmMxAAADSAAAABZhdmMxAAADTAAAABZhdmMxAAADUAAAABZhdmMxAAADVgAAABZhdmMxAAADWAAAABZhdmMxAAADXAAAABZhdmMxAAADYAAAABZhdmMxAAADZAAAABZhdmMxAAADaAAAABZhdmMxAAADbAAAABZhdmMxAAADcAAAABZhdmMxAAADdAAAABZhdmMxAAADegAAABZhdmMxAAADfAAAABZhdmMxAAADgAAAABZhdmMxAAADhAAAABZhdmMxAAADiAAAABZhdmMxAAADjAAAABZhdmMxAAADkAAAABZhdmMxAAADlAAAABZhdmMxAAADmAAAABZhdmMxAAADnAAAABZhdmMxAAADoAAAABZhdmMxAAADpAAAABZhdmMxAAADqAAAABZhdmMxAAADrAAAABZhdmMxAAADsAAAABZhdmMxAAADtAAAABZhdmMxAAADuAAAABZhdmMxAAADvAAAABZhdmMxAAADwAAAABZhdmMxAAADxAAAABZhdmMxAAADyAAAABZhdmMxAAADzAAAABZhdmMxAAAD0AAAABZhdmMxAAAD1AAAABZhdmMxAAAD2AAAABZhdmMxAAAD3AAAABZhdmMxAAAD4AAAABZhdmMxAAAD5AAAABZhdmMxAAAD6AAAABZhdmMxAAAD7AAAABZhdmMxAAAD8AAAABZhdmMxAAAD9AAAABZhdmMxAAAD+AAAABZhdmMxAAAD/AAAABZhdmMxAAAEAAAAABZhdmMxAAAEBAAAABZhdmMxAAAECgAAABZhdmMxAAAEDA=="
+    type="video/mp4" />
+</video>
+
 </body>
 </html>
